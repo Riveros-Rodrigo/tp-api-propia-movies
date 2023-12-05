@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const paginate = require('express-paginate');
 
 //Aquí pueden colocar las rutas de las APIs
@@ -8,6 +9,8 @@ const movieApiRoutes = require('./routes/api.v1/movies.routes')
 app.use(express.json());
 //URL encode  - Para que nos pueda llegar la información desde el formulario al req.body
 app.use(express.urlencoded({ extended: false }));
+
+app.use(cors())
 
 app.use(paginate.middleware(8,50));
 //ruta de api
